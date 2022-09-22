@@ -1,8 +1,11 @@
 ---
 notes:
 ---
-## Introduction
 
-Congratulations on your new slide deck 🎉
+<!-- .slide: class="introduction blur-background" data-background-image="/workshop.jpg" -->
 
-As with other [Empress](https://github.com/empress) project you write your content in Markdown with a bit of Yaml frontmatter
+# Lint Your Code Into the Future
+
+Chris Manson - @real_ate
+
+![chris](/chris.jpg) <!-- .element: class="face" -->

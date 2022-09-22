@@ -1,4 +1,4 @@
-open-slide-simplabs-template
+open-slide-mainmatter-template
 ==============================================================================
 
 [Short description of the addon.]
@@ -15,7 +15,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install open-slide-simplabs-template
+ember install open-slide-mainmatter-template
 ```
 
 

@@ -1,6 +1,7 @@
 'use strict';
 
 const funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
 const { map } = require('broccoli-stew');
 
 module.exports = {
@@ -55,9 +56,12 @@ module.exports = {
     }
   },
 
-  treeForPublic() {
-    return funnel('node_modules/reveal.js/plugin/', {
-      destDir: 'plugin'
-    });
+  treeForPublic(tree) {
+    return mergeTrees([
+      tree,
+      funnel('node_modules/reveal.js/plugin/', {
+        destDir: 'plugin'
+      })
+    ]);
   }
 };

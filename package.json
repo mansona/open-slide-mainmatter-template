@@ -1,6 +1,6 @@
 {
-  "name": "open-slide-simplabs-template",
-  "version": "0.1.4",
+  "name": "open-slide-mainmatter-template",
+  "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon",
