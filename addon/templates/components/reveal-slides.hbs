@@ -1,7 +1,7 @@
 <div class="reveal">
 	<div class="slides">
     {{#each @slides as |slide|}}
-      <section data-markdown data-transition="none">
+      <section data-markdown>
         <textarea data-template>
 {{slide.content}}
 
@@ -19,6 +19,8 @@ Note:
 <script>
   if(typeof FastBoot === 'undefined') {
     Reveal.initialize({
+      transition: 'none',
+      backgroundTransition: 'none',
       width: "1280",
 			height: "720",
 			margin: 0.1,
