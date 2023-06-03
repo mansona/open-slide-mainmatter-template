@@ -3,6 +3,7 @@
 const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 const { map } = require('broccoli-stew');
+const { join, dirname, relative } = require('path')
 
 module.exports = {
   name: require('./package').name,
@@ -43,11 +44,11 @@ module.exports = {
 
     this.import('vendor/js/reveal.js');
 
-    app.import('node_modules/reveal.js/css/reset.css');
-    app.import('node_modules/reveal.js/css/reveal.css');
+    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), '../css/reset.css')));
+    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), '../css/reveal.css')));
 
     app.import('vendor/simplabs.css')
-    app.import(`node_modules/reveal.js/lib/css/${revealOptions.highlightTheme || 'monokai'}.css`)
+    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), `../css/${revealOptions.highlightTheme || 'monokai'}.css`)));
   },
 
   contentFor: function(type){
