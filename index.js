@@ -22,7 +22,7 @@ module.exports = {
       ]
     });
 
-    const revealCssFiles = funnel(join(dirname(require.resolve('reveal.js')), '..'), {files: ['css/**', 'lib/css/**']});
+    const revealCssFiles = funnel(join(dirname(require.resolve('reveal.js')), '..'), {include: ['css/**', 'lib/css/**']});
 
     revealLibFiles = map(revealLibFiles, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 
