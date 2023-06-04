@@ -3,7 +3,7 @@
 const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 const { map } = require('broccoli-stew');
-const { dirname } = require('path')
+const { dirname, join } = require('path')
 
 module.exports = {
   name: require('./package').name,
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   treeForVendor() {
-    let revealLibFiles = funnel('node_modules/reveal.js/', {
+    let revealLibFiles = funnel(join(dirname(require.resolve('reveal.js')), '..'), {
       files: [
         'js/reveal.js',
         'plugin/markdown/marked.js',
@@ -22,7 +22,7 @@ module.exports = {
       ]
     });
 
-    const revealCssFiles = funnel('node_modules/reveal.js', {files: ['css/**']});
+    const revealCssFiles = funnel(join(dirname(require.resolve('reveal.js')), '..'), {files: ['css/**']});
 
     revealLibFiles = map(revealLibFiles, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 
@@ -61,7 +61,7 @@ module.exports = {
   treeForPublic(tree) {
     return mergeTrees([
       tree,
-      funnel('node_modules/reveal.js/plugin/', {
+      funnel(join(dirname(require.resolve('reveal.js')), '..', 'plugin'), {
         destDir: 'plugin'
       })
     ]);
