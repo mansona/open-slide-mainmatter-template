@@ -3,7 +3,7 @@
 const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 const { map } = require('broccoli-stew');
-const { join, dirname, relative } = require('path')
+const { dirname } = require('path')
 
 module.exports = {
   name: require('./package').name,
@@ -22,9 +22,11 @@ module.exports = {
       ]
     });
 
+    const revealCssFiles = funnel('node_modules/reveal.js', {files: ['css/**']});
+
     revealLibFiles = map(revealLibFiles, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
 
-    return revealLibFiles;
+    return mergeTrees([revealLibFiles, revealCssFiles]);
   },
 
   included(app) {
@@ -44,11 +46,10 @@ module.exports = {
 
     this.import('vendor/js/reveal.js');
 
-    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), '../css/reset.css')));
-    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), '../css/reveal.css')));
-
-    app.import('vendor/simplabs.css')
-    app.import(relative(process.cwd(), join(dirname(require.resolve('reveal.js')), `../css/${revealOptions.highlightTheme || 'monokai'}.css`)));
+    this.import('vendor/css/reset.css');
+    this.import('vendor/css/reveal.css');
+    this.import('vendor/simplabs.css');
+    this.import(`vendor/../css/${revealOptions.highlightTheme || 'monokai'}.css`);
   },
 
   contentFor: function(type){
