@@ -49,7 +49,7 @@ module.exports = {
     this.import('vendor/css/reset.css');
     this.import('vendor/css/reveal.css');
     this.import('vendor/simplabs.css');
-    this.import(`vendor/../css/${revealOptions.highlightTheme || 'monokai'}.css`);
+    this.import(`vendor/css/${revealOptions.highlightTheme || 'monokai'}.css`);
   },
 
   contentFor: function(type){
