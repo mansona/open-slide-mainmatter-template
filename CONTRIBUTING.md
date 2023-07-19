@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd open-slide-simplabs-template`
+* `cd open-slide-mainmatter-template`
 * `npm install`
 
 ## Linting

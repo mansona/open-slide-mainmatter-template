@@ -1,5 +1,6 @@
-<div class="reveal">
-	<div class="slides">
+{{!-- template-lint-disable block-indentation require-input-label --}}
+<div class="reveal" {{reveal}}>
+ <div class="slides">
     {{#each @slides as |slide|}}
       <section data-markdown>
         <textarea data-template>
@@ -14,25 +15,3 @@ Note:
     {{/each}}
 	</div>
 </div>
-
-
-<script>
-  if(typeof FastBoot === 'undefined') {
-    Reveal.initialize({
-      transition: 'none',
-      backgroundTransition: 'none',
-      width: "1280",
-			height: "720",
-			margin: 0.1,
-			center: false,
-      hash: true,
-      display: 'flex',
-      dependencies: [
-					{ src: '/plugin/markdown/marked.js' },
-					{ src: '/plugin/markdown/markdown.js' },
-					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '/plugin/notes/notes.js', async: true }
-				]
-    });
-  }
-</script>
